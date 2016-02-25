@@ -1,4 +1,4 @@
-package com.c1000k.netty;
+package com.c1000k.netty.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -9,10 +9,10 @@ import io.netty.example.http.websocketx.benchmarkserver.WebSocketServerInitializ
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
-public class NettyServer {
+public class NettyWebServer {
 
 	public static void main(String[] args) throws InterruptedException {
-		final int PORT = 8881;
+		final int PORT = 8080;
 		EventLoopGroup bossGroup = new NioEventLoopGroup(1);
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		try {
