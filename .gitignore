@@ -2,3 +2,5 @@ c1000k_java/.settings/
 c1000k_java/bin/
 c1000k_java/.gradle/
 c1000k_java/build/
+.metadata/
+.settings/
