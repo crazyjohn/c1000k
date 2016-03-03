@@ -5,12 +5,16 @@ import io.vertx.ext.web.RoutingContext;
 
 import java.util.Set;
 
+import com.crazyjohn.playboy.log.Logger;
+
 public class SelfController {
 
-	public static void uploadHead(RoutingContext context) {
+	public void uploadHead(RoutingContext context) {
+		Logger.log("Upload request comming...");
 		Set<FileUpload> uploads = context.fileUploads();
 		uploads.stream().forEach(upload -> {
 			System.out.println(upload.name());
 		});
+		context.response().end("Upload finished.");
 	}
 }
