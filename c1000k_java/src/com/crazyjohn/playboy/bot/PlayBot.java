@@ -17,8 +17,10 @@ public class PlayBot {
 				// response.statusCode());
 
 				});
+			// upload
+			client.getNow(8080, "127.0.0.1", "/upload/head/", response -> {
+			});
 		}
-
+		vertx.close();
 	}
-
 }
