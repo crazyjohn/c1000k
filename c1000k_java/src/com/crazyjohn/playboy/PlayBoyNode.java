@@ -1,5 +1,7 @@
 package com.crazyjohn.playboy;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerOptions;
@@ -17,14 +19,18 @@ import com.crazyjohn.playboy.logic.self.Self;
  *
  */
 public class PlayBoyNode {
+	static AtomicInteger count = new AtomicInteger(0);
 
 	public static void main(String[] args) {
+
 		Vertx vertx = Vertx.vertx();
 		HttpServerOptions settings = new HttpServerOptions();
 		HttpServer server = vertx.createHttpServer(settings);
 		Router router = Router.router(vertx);
+		// say hi
 		router.route("/hi/").handler(routingContext -> {
 			routingContext.response().putHeader("content-type", "text/plain").end("Hello biatch, this is playboy!");
+			Logger.log("Say hi: " + count.incrementAndGet());
 		});
 		// upload
 		Self selfController = new Self();

@@ -5,13 +5,20 @@ import io.vertx.core.http.HttpClient;
 
 public class PlayBot {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Vertx vertx = Vertx.vertx();
 		HttpClient client = vertx.createHttpClient();
-		client.getNow("localhost:8080", response -> {
-			com.crazyjohn.playboy.log.Logger.log("Received response with status code " + response.statusCode());
+		int callTimes = 1000;
+		int sleepTimes = 1;
+		for (int i = 0; i < callTimes; i++) {
+			Thread.sleep(sleepTimes);
+			client.getNow(8080, "127.0.0.1", "/hi/", response -> {
+				// Logger.log("Received response with status code " +
+				// response.statusCode());
 
-		});
+				});
+		}
+
 	}
 
 }
