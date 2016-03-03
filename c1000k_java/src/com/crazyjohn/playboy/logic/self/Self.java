@@ -7,8 +7,13 @@ import java.util.Set;
 
 import com.crazyjohn.playboy.log.Logger;
 
-public class SelfController {
+public class Self {
 
+	/**
+	 * upload the head photo
+	 * 
+	 * @param context
+	 */
 	public void uploadHead(RoutingContext context) {
 		Logger.log("Upload request comming...");
 		Set<FileUpload> uploads = context.fileUploads();

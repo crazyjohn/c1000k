@@ -6,7 +6,7 @@ import io.vertx.core.http.HttpServerOptions;
 import io.vertx.ext.web.Router;
 
 import com.crazyjohn.playboy.log.Logger;
-import com.crazyjohn.playboy.logic.self.SelfController;
+import com.crazyjohn.playboy.logic.self.Self;
 
 /**
  * The playboy node;
@@ -27,7 +27,7 @@ public class PlayBoyNode {
 			routingContext.response().putHeader("content-type", "text/plain").end("Hello biatch, this is playboy!");
 		});
 		// upload
-		SelfController selfController = new SelfController();
+		Self selfController = new Self();
 		router.route("/upload/head/").handler(selfController::uploadHead);
 		// start server
 		server.requestHandler(router::accept).listen(8080, result -> {
