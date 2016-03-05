@@ -8,7 +8,7 @@ public class PlayBot {
 	public static void main(String[] args) throws InterruptedException {
 		Vertx vertx = Vertx.vertx();
 		HttpClient client = vertx.createHttpClient();
-		int callTimes = 1000;
+		int callTimes = 100000;
 		int sleepTimes = 1;
 		for (int i = 0; i < callTimes; i++) {
 			Thread.sleep(sleepTimes);
