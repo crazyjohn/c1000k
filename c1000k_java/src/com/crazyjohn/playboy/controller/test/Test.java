@@ -1,4 +1,4 @@
-package com.crazyjohn.playboy.logic.test;
+package com.crazyjohn.playboy.controller.test;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

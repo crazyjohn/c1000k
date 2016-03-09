@@ -6,9 +6,9 @@ import io.vertx.core.http.HttpServerOptions;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 
+import com.crazyjohn.playboy.controller.self.Self;
+import com.crazyjohn.playboy.controller.test.Test;
 import com.crazyjohn.playboy.log.Logger;
-import com.crazyjohn.playboy.logic.self.Self;
-import com.crazyjohn.playboy.logic.test.Test;
 
 public class ScaleMode {
 

@@ -1,4 +1,4 @@
-package com.crazyjohn.playboy.logic.match;
+package com.crazyjohn.playboy.controller.match;
 
 import io.vertx.ext.web.RoutingContext;
 
