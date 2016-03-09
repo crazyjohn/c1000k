@@ -10,7 +10,7 @@ public class Test {
 	static AtomicInteger count = new AtomicInteger(0);
 
 	public void sayHi(RoutingContext context) {
-		context.response().putHeader("content-type", "text/plain").end("Hello biatch, this is playboy!");
+		context.response().putHeader("content-type", "text/html").end("<font size='10'>Hello biatch, this is playboy!</font>");
 		Logger.log("Say hi: " + count.incrementAndGet());
 	}
 }

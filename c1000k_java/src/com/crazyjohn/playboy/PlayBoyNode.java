@@ -20,19 +20,19 @@ import com.crazyjohn.playboy.logic.test.Test;
  */
 public class PlayBoyNode {
 
-	protected static void singleMode(Vertx vertx) {
-		scaleOutMode(vertx, 1);
+	protected static void singleMode(Vertx vertx, int port) {
+		scaleOutMode(vertx, 1, port);
 	}
 
-	protected static void scaleOutMode(Vertx vertx, int instanceCount) {
+	protected static void scaleOutMode(Vertx vertx, int instanceCount, int port) {
 		for (int i = 0; i < instanceCount; i++) {
 			HttpServerOptions options = new HttpServerOptions();
 			HttpServer server = vertx.createHttpServer(options);
 			// create router
 			Router router = Router.router(vertx);
 			// test case
-			Test test = new Test();
-			router.route("/hi/").handler(test::sayHi);
+			Test testController = new Test();
+			router.route("/hi/").handler(testController::sayHi);
 			// upload case
 			Self selfController = new Self();
 			// Enable multipart form data parsing
@@ -42,7 +42,7 @@ public class PlayBoyNode {
 			router.route("/uploadForm/").handler(selfController::uploadForm);
 			router.route("/form/").handler(selfController::form);
 			// start server
-			server.requestHandler(router::accept).listen(8080, result -> {
+			server.requestHandler(router::accept).listen(port, result -> {
 				if (result.succeeded()) {
 					Logger.log("The playboy ready!");
 				} else {
@@ -61,8 +61,8 @@ public class PlayBoyNode {
 		// create vertx instance
 		Vertx vertx = Vertx.vertx();
 		// scale mode
-		int processorCount = 5;
-		scaleOutMode(vertx, processorCount);
+		int processorCount = 1;
+		scaleOutMode(vertx, processorCount, 8082);
 	}
 
 }
