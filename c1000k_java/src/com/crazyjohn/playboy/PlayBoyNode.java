@@ -4,6 +4,7 @@ import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerOptions;
 import io.vertx.ext.web.Router;
+import io.vertx.ext.web.handler.BodyHandler;
 
 import com.crazyjohn.playboy.log.Logger;
 import com.crazyjohn.playboy.logic.self.Self;
@@ -34,7 +35,12 @@ public class PlayBoyNode {
 			router.route("/hi/").handler(test::sayHi);
 			// upload case
 			Self selfController = new Self();
-			router.route("/upload/head/").handler(selfController::uploadHead);
+			// Enable multipart form data parsing
+			Logger.log(String.format("Upload dir: %s", "/upload"));
+		    router.route().handler(BodyHandler.create().setUploadsDirectory("/upload"));
+			// form
+			router.route("/uploadForm/").handler(selfController::uploadForm);
+			router.route("/form/").handler(selfController::form);
 			// start server
 			server.requestHandler(router::accept).listen(8080, result -> {
 				if (result.succeeded()) {
